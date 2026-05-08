@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gmail Pic Minimizer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Google Sans', Roboto, sans-serif;
+      width: 300px;
+      padding: 20px;
+      color: #202124;
+      background: #fff;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .row {
+      margin-bottom: 16px;
+    }
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    label strong {
+      color: #1a73e8;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #1a73e8;
+    }
+    select {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #dadce0;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #444;
+      background: #fff;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8eaed;
+      margin: 16px 0;
+    }
+    .save-btn {
+      width: 100%;
+      padding: 10px;
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .save-btn:hover { background: #1557b0; }
+    .saved-note {
+      text-align: center;
+      font-size: 12px;
+      color: #34a853;
+      margin-top: 8px;
+      min-height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+    Gmail Pic Minimizer
+  </h1>
+
+  <div class="row">
+    <label>
+      <span>Standard-Qualität</span>
+      <strong id="q-label">80%</strong>
+    </label>
+    <input type="range" id="quality" min="10" max="100" value="80">
+  </div>
+
+  <div class="row">
+    <label>
+      <span>Max. Auflösung</span>
+      <strong id="dim-label">1920 px</strong>
+    </label>
+    <input type="range" id="maxDimension" min="480" max="4096" step="160" value="1920">
+  </div>
+
+  <div class="row">
+    <label><span>Ausgabeformat</span></label>
+    <select id="format">
+      <option value="image/jpeg">JPEG (kleiner, empfohlen)</option>
+      <option value="image/png">PNG (verlustfrei)</option>
+      <option value="image/webp">WebP (modern, sehr klein)</option>
+    </select>
+  </div>
+
+  <hr class="divider">
+
+  <button class="save-btn" id="save">Einstellungen speichern</button>
+  <div class="saved-note" id="saved-note"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
