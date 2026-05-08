@@ -66,11 +66,19 @@ Einstellungen werden in `chrome.storage.local` gespeichert und sind auch im Exte
 
 ## Firefox-Port
 
-Nur diese Zeile in `manifest.json` ergänzen:
+Zwei Änderungen in `manifest.json` gegenüber Chrome:
+
 ```json
+// 1. background.service_worker → background.scripts (Firefox unterstützt service_worker noch nicht)
+"background": { "scripts": ["background.js"] }
+
+// 2. Gecko-ID hinzufügen
 "browser_specific_settings": { "gecko": { "id": "gmail-pic-minimizer@local" } }
 ```
-Der restliche Code ist 100% kompatibel (Manifest V3 seit Firefox 109).
+
+Installation in Firefox: `about:debugging` → "Temporäres Add-on laden" → `manifest.json` wählen.
+
+Der restliche Code (content.js, background.js, popup) ist 100% kompatibel.
 
 ## Version
 
